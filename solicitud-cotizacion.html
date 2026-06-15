@@ -122,20 +122,21 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
   <div class="container layout">
 
     <section class="card">
-      <h2>Datos del requerimiento</h2>
-      <p class="lead">Registra tu requerimiento empresarial. Al enviarlo, recibirás un código único para seguimiento y trazabilidad.</p>
-      <p
-      style="
+  <h2>Datos del requerimiento</h2>
+
+  <p class="lead">
+    Registra tu requerimiento empresarial. Al enviarlo, recibirás un código de seguimiento para la gestión y trazabilidad de su atención.
+  </p>
+
+  <p
+    style="
       font-size:13px;
       color:#667085;
       margin-top:8px;
-      margin-bottom:14px;
-      ">
-(*) Los campos marcados con asterisco son obligatorios para registrar el requerimiento y generar un código de seguimiento.
-</p>
-      <p class="privacy-note">
-        Tu información será utilizada únicamente para evaluar y gestionar su requerimiento empresarial. Virexa Group no comparte datos con terceros y aplica criterios de confidencialidad y tratamiento responsable de la información.
-      </p>
+      margin-bottom:18px;
+    ">
+    (*) Campos obligatorios. La información proporcionada será utilizada únicamente para gestionar su requerimiento.
+  </p>
 
       <form onsubmit="sendQuote(event)">
         <div class="form-grid">
@@ -148,6 +149,7 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
             <input
             id="ruc"
             maxlength="11"
+            minlength="11"
             required
             oninput="soloNumeros(this,11)"
             placeholder="11 dígitos">
@@ -169,7 +171,13 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
           </div>
           <div>
             <label>Teléfono / WhatsApp *</label>
-            <input id="telefono" maxlength="9" required oninput="soloNumeros(this,9)">
+            <input
+            id="telefono"
+            maxlength="9"
+            minlength="9"
+            required
+            placeholder="9 dígitos"
+            oninput="soloNumeros(this,9)">
           </div>
           <div>
             <label>Región de entrega o atención</label>
@@ -417,6 +425,28 @@ function codigoSolicitud(){
 
 function sendQuote(e){
   e.preventDefault();
+  if (ruc.value.length !== 11) {
+    alert("El RUC debe contener exactamente 11 dígitos.");
+    ruc.focus();
+    return;
+}
+  
+  if (!ruc.value.startsWith("10") && !ruc.value.startsWith("20")) {
+    alert("Ingrese un RUC válido. Debe iniciar con 10 o 20.");
+    ruc.focus();
+    return;
+}
+  
+  if (telefono.value.length !== 9) {
+  alert("El teléfono debe contener exactamente 9 dígitos.");
+  telefono.focus();
+  return;
+}
+  if (detalle.value.trim().length < 3) {
+    alert("Describa brevemente su requerimiento.");
+    detalle.focus();
+    return;
+}
   const codigo = codigoSolicitud();
 
   const body = `Requerimiento empresarial Virexa Group
@@ -435,7 +465,12 @@ Fecha ideal de entrega: ${fechaEntrega.value}
 Detalle del requerimiento:
 ${detalle.value}`;
 
-  alert("Su requerimiento fue registrado con el código: " + codigo + ". Conserve este código para seguimiento.");
+  alert(
+"Su requerimiento fue registrado con el código: " +
+codigo +
+". Conserve este código para seguimiento.\n\n" +
+"Al continuar se abrirá su aplicación de correo electrónico para remitir la solicitud a Virexa Group."
+);
 
   window.location.href =
     "mailto:virexagroup.pe@gmail.com?subject=Requerimiento empresarial - " + codigo +
