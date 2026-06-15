@@ -1,72 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Virexa Group | Suministros Estratégicos y Soluciones Corporativas</title>
+<meta name="description" content="Virexa Group gestiona requerimientos corporativos con seguimiento, trazabilidad y menor incertidumbre.">
 <style>
 :root{
-  --azul:#062B55;
-  --azul2:#0A3D78;
-  --gris:#667085;
-  --fondo:#F5F7FA;
-  --linea:#D9E1EA;
-  --texto:#172033;
+  --navy:#061f3c;
+  --navy2:#0a3d78;
+  --blue:#0b4ea2;
+  --gray:#667085;
+  --soft:#f4f7fb;
+  --line:#d9e1ea;
+  --text:#101828;
+  --white:#fff;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--texto);background:white;line-height:1.5}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);line-height:1.5;background:white}
 a{text-decoration:none;color:inherit}
 .container{width:min(1120px,92%);margin:auto}
-header{position:sticky;top:0;background:white;border-bottom:1px solid var(--linea);z-index:10}
-.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:800;color:var(--azul);letter-spacing:.08em}
-.logo small{display:block;font-size:11px;color:var(--gris);letter-spacing:.12em}
+header{position:sticky;top:0;background:white;border-bottom:1px solid var(--line);z-index:50}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.logo{font-weight:900;color:var(--navy);letter-spacing:.08em}
+.logo small{display:block;font-size:11px;color:var(--gray);letter-spacing:.12em}
 nav{display:flex;gap:22px;font-size:14px}
-.btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:700}
-.btn-primary{background:var(--azul);color:white}
-.btn-light{background:white;color:var(--azul);border:1px solid var(--linea)}
-.hero{background:linear-gradient(135deg,#061f3c,#0A3D78 62%,#eef3f8 62%,#fff);color:white}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center;min-height:610px;padding:70px 0}
-.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:#cbd8e7;font-weight:700}
-h1{font-size:clamp(38px,5vw,62px);line-height:1.04;margin:14px 0 18px}
-.hero p{font-size:20px;color:#e6edf5;max-width:640px}
-.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.visual{background:white;color:var(--texto);border-radius:26px;padding:26px;box-shadow:0 25px 80px rgba(0,0,0,.25)}
-.table{height:290px;border-radius:20px;background:linear-gradient(145deg,#102d4f,#f8fafc);position:relative;overflow:hidden}
-.doc{position:absolute;background:white;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
-.d1{width:210px;height:140px;left:28px;top:32px}
-.d2{width:240px;height:155px;right:28px;bottom:32px}
-.pen{position:absolute;width:220px;height:12px;background:#9aa4b2;transform:rotate(-28deg);left:110px;top:145px;border-radius:20px}
-.chip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.chip div{background:#f5f7fa;border:1px solid var(--linea);border-radius:14px;padding:14px}
-.chip b{display:block;color:var(--azul);font-size:22px}
-section{padding:70px 0}
-h2{font-size:clamp(28px,3vw,42px);line-height:1.12;margin:0 0 12px}
-.lead{font-size:18px;color:var(--gris);max-width:760px}
-.cards,.solutions{display:grid;gap:18px}
-.cards{grid-template-columns:repeat(4,1fr)}
-.solutions{grid-template-columns:repeat(3,1fr)}
-.card{border:1px solid var(--linea);border-radius:18px;padding:22px;background:white}
-.card h3{color:var(--azul);margin:0 0 8px}
-.bg{background:var(--fondo)}
-.process{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.step{text-align:center;border:1px solid var(--linea);border-radius:18px;padding:20px;background:white}
-.step span{font-size:30px}
-.cta{background:linear-gradient(135deg,#061f3c,#0A3D78);color:white}
-.cta h2{color:white}
-footer{background:#0b1420;color:#d7dee8;padding:42px 0}
-.footer{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:24px}
-footer h3,footer b{color:white}
-footer a{display:block;margin:7px 0}
-.integridad{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;padding-top:16px;font-size:13px;color:#b8c2cf}
-@media(max-width:900px){
-nav{display:none}.hero-grid,.footer{grid-template-columns:1fr}.cards,.solutions{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr}
+.btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:800}
+.btn-primary{background:var(--navy);color:white}
+.btn-light{background:white;color:var(--navy);border:1px solid var(--line)}
+.hero{
+  min-height:720px;
+  color:white;
+  background:
+    linear-gradient(90deg,rgba(3,19,38,.98) 0%,rgba(3,19,38,.92) 34%,rgba(3,19,38,.42) 55%,rgba(3,19,38,.05) 100%),
+    url("hero-virexa.png") center/cover no-repeat,
+    linear-gradient(135deg,#061f3c,#0a3d78);
 }
-@media(max-width:560px){
-.cards,.solutions,.chip{grid-template-columns:1fr}
+.hero-inner{min-height:720px;display:flex;align-items:center}
+.hero-content{max-width:610px}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#cbd8e7;font-weight:800}
+h1{font-size:clamp(42px,5.5vw,72px);line-height:1.02;margin:18px 0}
+.hero p{font-size:21px;color:#e6edf5;max-width:590px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;color:#dce7f4;font-size:14px}
+.trust span{border:1px solid rgba(255,255,255,.25);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08)}
+section{padding:76px 0}
+h2{font-size:clamp(30px,3.5vw,46px);line-height:1.12;margin:0 0 14px;color:#0b1f3a}
+.lead{font-size:18px;color:var(--gray);max-width:790px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:24px}
+.card h3{color:var(--navy);margin:0 0 10px;font-size:20px}
+.card p{margin:0;color:#344054}
+.soft{background:var(--soft)}
+.process{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:34px}
+.step{text-align:center;background:white;border:1px solid var(--line);border-radius:18px;padding:18px}
+.step .icon{font-size:28px}
+.step h3{font-size:16px;margin:10px 0 6px;color:var(--navy)}
+.step p{font-size:14px;margin:0;color:#475467}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.formbox{background:white;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 18px 50px rgba(16,24,40,.08)}
+label{font-weight:700;font-size:14px;display:block;margin:14px 0 6px;color:#172033}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-family:inherit;font-size:15px}
+textarea{min-height:120px;resize:vertical}
+.counter{text-align:right;color:var(--gray);font-size:12px;margin-top:4px}
+.notice{background:#eef4ff;border:1px solid #c7d7fe;border-radius:14px;padding:16px;color:#12346b;margin-top:16px}
+.dark{background:linear-gradient(135deg,#061f3c,#0a3d78);color:white}
+.dark h2{color:white}.dark .lead{color:#dbe7f5}
+.policy-list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.policy{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;color:#0b1f3a;font-weight:700}
+footer{background:#07111f;color:#d7dee8;padding:42px 0}
+.footer{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:24px}
+footer h3, footer b{color:white}
+footer a{display:block;margin:7px 0;color:#d7dee8}
+.integrity{border-top:1px solid rgba(255,255,255,.14);margin-top:24px;padding-top:16px;font-size:13px;color:#b8c2cf}
+@media(max-width:950px){
+nav{display:none}
+.grid-4,.grid-3,.process,.policy-list,.split,.footer{grid-template-columns:1fr}
+.hero,.hero-inner{min-height:680px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -76,33 +91,29 @@ nav{display:none}.hero-grid,.footer{grid-template-columns:1fr}.cards,.solutions{
       <a href="#nosotros">Nosotros</a>
       <a href="#soluciones">Soluciones</a>
       <a href="#proceso">Cómo trabajamos</a>
+      <a href="#cotizar">Cotizar</a>
+      <a href="#reclamaciones">Reclamaciones</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <a class="btn btn-primary" href="#cotizar">Solicitar cotización</a>
   </div>
 </header>
 
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">Proveedor estratégico empresarial</div>
-      <h1>Soluciones corporativas con cumplimiento, control y trazabilidad.</h1>
-      <p>Ayudamos a organizaciones públicas y privadas a gestionar requerimientos corporativos con mayor orden, mejor comunicación y menor incertidumbre.</p>
+<section class="hero" id="inicio">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="eyebrow">Proveedor Estratégico Empresarial</div>
+      <h1>Cumplimos lo que prometemos.</h1>
+      <p>Gestionamos requerimientos corporativos con seguimiento, trazabilidad y menor incertidumbre.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#cotizar">Solicitar cotización</a>
-        <a class="btn btn-light" href="#soluciones">Ver soluciones</a>
+        <a class="btn btn-light" href="#proceso">Cómo trabajamos</a>
       </div>
-    </div>
-    <div class="visual">
-      <div class="table">
-        <div class="doc d1"></div>
-        <div class="doc d2"></div>
-        <div class="pen"></div>
-      </div>
-      <div class="chip">
-        <div><b>01</b>Orden</div>
-        <div><b>02</b>Datos</div>
-        <div><b>03</b>Cumplimiento</div>
+      <div class="trust">
+        <span>Seguimiento</span>
+        <span>Trazabilidad</span>
+        <span>Cobertura nacional</span>
+        <span>Gestión por proyectos</span>
       </div>
     </div>
   </div>
@@ -112,26 +123,28 @@ nav{display:none}.hero-grid,.footer{grid-template-columns:1fr}.cards,.solutions{
   <div class="container">
     <h2>Las organizaciones no necesitan más proveedores. Necesitan proveedores que cumplan.</h2>
     <p class="lead">Virexa Group es la marca comercial de Yakar Negocios E.I.R.L., orientada a suministros corporativos, abastecimiento y soluciones empresariales con enfoque de proyectos.</p>
-    <div class="cards">
-      <div class="card"><h3>Transparencia</h3><p>Información clara y sustentada en cada propuesta.</p></div>
-      <div class="card"><h3>Gestión por proyectos</h3><p>Cada requerimiento se gestiona con orden y seguimiento.</p></div>
-      <div class="card"><h3>Buenas prácticas</h3><p>Procesos preparados para mejora continua e ISO.</p></div>
+
+    <div class="grid-4">
+      <div class="card"><h3>Transparencia</h3><p>Información clara, sustentada y alineada al requerimiento.</p></div>
+      <div class="card"><h3>Gestión por proyectos</h3><p>Orden, seguimiento y control durante la atención.</p></div>
+      <div class="card"><h3>Buenas prácticas</h3><p>Procesos preparados para mejora continua y estándares ISO.</p></div>
       <div class="card"><h3>Cobertura nacional</h3><p>Atención a organizaciones públicas y privadas en Perú.</p></div>
     </div>
   </div>
 </section>
 
-<section class="bg" id="soluciones">
+<section class="soft" id="soluciones">
   <div class="container">
     <h2>Soluciones que ofrecemos</h2>
     <p class="lead">Atendemos requerimientos corporativos con enfoque operativo, comercial y estratégico.</p>
-    <div class="solutions">
-      <div class="card"><h3>Textiles corporativos</h3><p>Polos, casacas, chalecos, jeans y uniformes institucionales.</p></div>
-      <div class="card"><h3>Merchandising</h3><p>Artículos promocionales personalizados para empresas y campañas.</p></div>
+
+    <div class="grid-3">
+      <div class="card"><h3>Textiles corporativos</h3><p>Polos, casacas, chalecos, pantalones y uniformes institucionales.</p></div>
+      <div class="card"><h3>Merchandising</h3><p>Artículos promocionales personalizados para empresas, campañas y eventos.</p></div>
       <div class="card"><h3>EPP</h3><p>Elementos de protección personal y equipamiento operativo.</p></div>
-      <div class="card"><h3>Suministros empresariales</h3><p>Atención de requerimientos corporativos por proyecto.</p></div>
-      <div class="card"><h3>Tecnología y equipos</h3><p>Soluciones tecnológicas, equipos y accesorios empresariales.</p></div>
-      <div class="card"><h3>Proyectos especiales</h3><p>Requerimientos personalizados con evaluación y seguimiento.</p></div>
+      <div class="card"><h3>Tecnología y equipos</h3><p>Equipos, accesorios y soluciones tecnológicas empresariales.</p></div>
+      <div class="card"><h3>Suministros empresariales</h3><p>Abastecimiento corporativo bajo requerimiento y por proyecto.</p></div>
+      <div class="card"><h3>Proyectos especiales</h3><p>Requerimientos personalizados con evaluación, propuesta y seguimiento.</p></div>
     </div>
   </div>
 </section>
@@ -140,21 +153,98 @@ nav{display:none}.hero-grid,.footer{grid-template-columns:1fr}.cards,.solutions{
   <div class="container">
     <h2>Cómo trabajamos</h2>
     <p class="lead">Una ruta simple para reducir incertidumbre y facilitar la toma de decisiones.</p>
+
     <div class="process">
-      <div class="step"><span>📝</span><h3>Necesidad</h3><p>Recibimos el requerimiento.</p></div>
-      <div class="step"><span>🔍</span><h3>Análisis</h3><p>Revisamos alcance y condiciones.</p></div>
-      <div class="step"><span>📊</span><h3>Evaluación</h3><p>Analizamos alternativas.</p></div>
-      <div class="step"><span>📄</span><h3>Propuesta</h3><p>Presentamos cotización.</p></div>
-      <div class="step"><span>🤝</span><h3>Seguimiento</h3><p>Ejecutamos y acompañamos.</p></div>
+      <div class="step"><div class="icon">📝</div><h3>Necesidad</h3><p>Recibimos el requerimiento.</p></div>
+      <div class="step"><div class="icon">🔍</div><h3>Análisis</h3><p>Revisamos alcance.</p></div>
+      <div class="step"><div class="icon">📊</div><h3>Evaluación</h3><p>Analizamos alternativas.</p></div>
+      <div class="step"><div class="icon">📄</div><h3>Propuesta</h3><p>Presentamos cotización.</p></div>
+      <div class="step"><div class="icon">⚙️</div><h3>Ejecución</h3><p>Gestionamos suministro.</p></div>
+      <div class="step"><div class="icon">📌</div><h3>Seguimiento</h3><p>Control y comunicación.</p></div>
+      <div class="step"><div class="icon">✅</div><h3>Cierre</h3><p>Entrega y conformidad.</p></div>
     </div>
   </div>
 </section>
 
-<section class="cta" id="cotizar">
+<section class="dark" id="cotizar">
+  <div class="container split">
+    <div>
+      <h2>Solicitud de cotización</h2>
+      <p class="lead">Toda solicitud recibirá un código único de identificación para facilitar el seguimiento.</p>
+      <div class="notice">Código referencial: <b id="scCode">SC-2026-0001</b></div>
+    </div>
+
+    <form class="formbox" onsubmit="sendQuote(event)">
+      <label>Razón social *</label>
+      <input id="empresa" required>
+
+      <label>RUC *</label>
+      <input id="ruc" maxlength="11" required>
+
+      <label>Nombre y apellido *</label>
+      <input id="contacto" required>
+
+      <label>Correo electrónico *</label>
+      <input id="correo" type="email" required>
+
+      <label>Teléfono *</label>
+      <input id="telefono" maxlength="9" required>
+
+      <label>Tipo de requerimiento *</label>
+      <select id="tipo" required>
+        <option value="">Seleccionar</option>
+        <option>Textiles corporativos</option>
+        <option>Merchandising</option>
+        <option>EPP</option>
+        <option>Tecnología y equipos</option>
+        <option>Suministros empresariales</option>
+        <option>Proyecto especial</option>
+      </select>
+
+      <label>Detalle del requerimiento *</label>
+      <textarea id="detalle" maxlength="1000" required oninput="updateCounter('detalle','cnt1')" onpaste="return false"></textarea>
+      <div class="counter"><span id="cnt1">1000</span> caracteres restantes</div>
+
+      <label><input type="checkbox" required style="width:auto"> Declaro que la información proporcionada es verdadera.</label>
+
+      <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+    </form>
+  </div>
+</section>
+
+<section id="reclamaciones">
+  <div class="container split">
+    <div>
+      <h2>Libro de Reclamaciones</h2>
+      <p class="lead">Agradecemos su comunicación. Esta información nos ayuda a revisar, corregir y mejorar la atención que proponemos brindar.</p>
+      <div class="notice">La empresa responderá dentro del plazo legal máximo de quince (15) días hábiles.</div>
+    </div>
+
+    <div class="formbox">
+      <h3>¿Queja o reclamo?</h3>
+      <p><b>Queja:</b> insatisfacción relacionada con la atención, comunicación o experiencia recibida.</p>
+      <p><b>Reclamo:</b> disconformidad relacionada con el producto o servicio contratado.</p>
+      <p><b>Código referencial:</b> LR-2026-0001</p>
+      <p>Este módulo será conectado en la siguiente fase con formulario, contador de caracteres, validaciones y registro automático.</p>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="politicas">
   <div class="container">
-    <h2>Cuéntanos tu requerimiento</h2>
-    <p class="lead" style="color:#dbe7f5">Pronto este espacio estará conectado al formulario de solicitud de cotización con código único SC-2026-0001.</p>
-    <a class="btn btn-light" href="mailto:virexagroup.pe@gmail.com?subject=Solicitud%20de%20cotización%20-%20Virexa%20Group">Enviar solicitud por correo</a>
+    <h2>Gobierno e Integridad</h2>
+    <p class="lead">Construimos relaciones basadas en transparencia, respeto, legalidad y mejora continua.</p>
+
+    <div class="policy-list">
+      <div class="policy">POL-001 Integridad</div>
+      <div class="policy">POL-002 Anticorrupción</div>
+      <div class="policy">POL-003 Código de Ética</div>
+      <div class="policy">POL-004 Privacidad</div>
+      <div class="policy">POL-005 Derechos Humanos</div>
+      <div class="policy">POL-006 Diversidad e Inclusión</div>
+      <div class="policy">POL-007 Prevención LAFT</div>
+      <div class="policy">POL-008 Denuncias</div>
+    </div>
   </div>
 </section>
 
@@ -163,7 +253,7 @@ nav{display:none}.hero-grid,.footer{grid-template-columns:1fr}.cards,.solutions{
     <div>
       <h3>VIREXA GROUP</h3>
       <p>Marca comercial de Yakar Negocios E.I.R.L.</p>
-      <p>Proveedor estratégico empresarial.</p>
+      <p>Proveedor Estratégico Empresarial.</p>
     </div>
     <div>
       <b>Contacto</b>
@@ -172,16 +262,42 @@ nav{display:none}.hero-grid,.footer{grid-template-columns:1fr}.cards,.solutions{
       <p>Lima – Perú</p>
     </div>
     <div>
-      <b>Próximamente</b>
-      <a href="#">Libro de Reclamaciones</a>
-      <a href="#">Política de Privacidad</a>
-      <a href="#">Políticas Corporativas</a>
+      <b>Enlaces</b>
+      <a href="#cotizar">Solicitar cotización</a>
+      <a href="#reclamaciones">Libro de Reclamaciones</a>
+      <a href="#politicas">Políticas Corporativas</a>
     </div>
   </div>
-  <div class="container integridad">
+  <div class="container integrity">
     Virexa Group mantiene una política de tolerancia cero frente a la corrupción, el lavado de activos, la minería ilegal y cualquier actividad ilícita.
   </div>
 </footer>
+
+<script>
+function updateCounter(id,counterId){
+  const max = 1000;
+  const value = document.getElementById(id).value.length;
+  document.getElementById(counterId).textContent = max - value;
+}
+function sendQuote(e){
+  e.preventDefault();
+  const body =
+`Solicitud de cotización Virexa Group
+
+Código referencial: SC-2026-0001
+
+Empresa: ${empresa.value}
+RUC: ${ruc.value}
+Contacto: ${contacto.value}
+Correo: ${correo.value}
+Teléfono: ${telefono.value}
+Tipo de requerimiento: ${tipo.value}
+
+Detalle:
+${detalle.value}`;
+  window.location.href = "mailto:virexagroup.pe@gmail.com?subject=Solicitud de cotización - Virexa Group&body=" + encodeURIComponent(body);
+}
+</script>
 
 </body>
 </html>
