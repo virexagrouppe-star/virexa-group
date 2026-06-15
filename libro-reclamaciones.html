@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libro de Reclamaciones | Virexa Group</title>
+<style>
+:root{--navy:#061f3c;--blue:#0a3d78;--gray:#667085;--soft:#f4f7fb;--line:#d9e1ea;--text:#101828}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--soft);line-height:1.5}
+.container{width:min(980px,92%);margin:auto}
+header{background:white;border-bottom:1px solid var(--line);padding:22px 0}
+.logo{font-weight:900;color:var(--navy);letter-spacing:.08em}
+.logo small{display:block;font-size:11px;color:var(--gray);letter-spacing:.12em}
+main{padding:54px 0}
+.card{background:white;border:1px solid var(--line);border-radius:22px;padding:30px;margin-bottom:22px}
+h1{font-size:42px;margin:0 0 10px;color:var(--navy)}
+h2{color:var(--navy)}
+.lead{font-size:18px;color:var(--gray)}
+.notice{background:#eef4ff;border:1px solid #c7d7fe;border-radius:14px;padding:16px;color:#12346b}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{font-weight:700;font-size:14px;display:block;margin:14px 0 6px}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:15px;font-family:inherit}
+textarea{min-height:150px;resize:vertical}
+.counter{text-align:right;color:var(--gray);font-size:12px;margin-top:4px}
+.btn{background:var(--navy);color:white;border:0;border-radius:10px;padding:13px 18px;font-weight:800;cursor:pointer;margin-top:18px}
+.btn:hover{background:var(--blue)}
+footer{padding:28px 0;color:var(--gray);font-size:13px;text-align:center}
+@media(max-width:700px){.grid{grid-template-columns:1fr}h1{font-size:34px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">VIREXA GROUP<small>LIBRO DE RECLAMACIONES</small></div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h1>Libro de Reclamaciones</h1>
+    <p class="lead">Agradecemos su comunicación. Esta información nos ayuda a revisar, corregir y mejorar la atención que proponemos brindar.</p>
+    <div class="notice">
+      Su comunicación será evaluada de manera objetiva. La respuesta será emitida dentro del plazo legal máximo de quince (15) días hábiles.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>¿Queja o reclamo?</h2>
+    <p><b>Queja:</b> insatisfacción relacionada con la atención, comunicación, oportunidad de respuesta o experiencia recibida.</p>
+    <p><b>Reclamo:</b> disconformidad relacionada con el producto entregado o el servicio contratado.</p>
+  </section>
+
+  <form class="card" onsubmit="enviarReclamo(event)">
+    <h2>Datos de la empresa</h2>
+
+    <div class="grid">
+      <div>
+        <label>RUC *</label>
+        <input id="ruc" maxlength="11" required oninput="soloNumeros(this,11)">
+      </div>
+      <div>
+        <label>Razón social *</label>
+        <input id="razon" required>
+      </div>
+    </div>
+
+    <label>Número de referencia relacionada *</label>
+    <input id="referencia" required placeholder="Ejemplo: COT-2026-0001 / PED-2026-0001 / PROY-2026-0001">
+
+    <h2>Persona de contacto</h2>
+
+    <div class="grid">
+      <div>
+        <label>Nombres *</label>
+        <input id="nombres" required>
+      </div>
+      <div>
+        <label>Apellidos *</label>
+        <input id="apellidos" required>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <label>Teléfono *</label>
+        <input id="telefono" maxlength="9" required oninput="soloNumeros(this,9)">
+      </div>
+      <div>
+        <label>Correo electrónico *</label>
+        <input id="correo" type="email" required>
+      </div>
+    </div>
+
+    <h2>Registro</h2>
+
+    <label>Tipo de comunicación *</label>
+    <select id="tipo" required>
+      <option value="">Seleccionar</option>
+      <option>Queja</option>
+      <option>Reclamo</option>
+    </select>
+
+    <label>Detalle *</label>
+    <textarea id="detalle" maxlength="1000" required oninput="contador()" onpaste="return false" placeholder="Describa los hechos con sus propias palabras. No se permite copiar y pegar en este campo."></textarea>
+    <div class="counter"><span id="restantes">1000</span> caracteres restantes</div>
+
+    <label>
+      <input type="checkbox" required style="width:auto">
+      Declaro que la información proporcionada es verdadera y corresponde a hechos que conozco directamente.
+    </label>
+
+    <label>
+      <input type="checkbox" required style="width:auto">
+      Autorizo el tratamiento de mis datos personales conforme a la Política de Privacidad de la empresa.
+    </label>
+
+    <button class="btn" type="submit">Enviar comunicación</button>
+  </form>
+
+</main>
+
+<footer>
+  Virexa Group · Marca comercial de Yakar Negocios E.I.R.L. · Lima, Perú
+</footer>
+
+<script>
+function soloNumeros(input,max){
+  input.value = input.value.replace(/[^0-9]/g,'').slice(0,max);
+}
+
+function contador(){
+  const max = 1000;
+  const usados = document.getElementById("detalle").value.length;
+  document.getElementById("restantes").textContent = max - usados;
+}
+
+function codigo(){
+  const fecha = new Date();
+  const año = fecha.getFullYear();
+  const timestamp = fecha.getTime().toString().slice(-6);
+  return "LR-" + año + "-" + timestamp;
+}
+
+function enviarReclamo(e){
+  e.preventDefault();
+
+  const cod = codigo();
+
+  const body =
+`Libro de Reclamaciones - Virexa Group
+
+Código único: ${cod}
+
+Tipo: ${tipo.value}
+
+Empresa:
+RUC: ${ruc.value}
+Razón social: ${razon.value}
+Referencia relacionada: ${referencia.value}
+
+Contacto:
+Nombres: ${nombres.value}
+Apellidos: ${apellidos.value}
+Teléfono: ${telefono.value}
+Correo: ${correo.value}
+
+Detalle:
+${detalle.value}
+
+Plazo de respuesta: máximo 15 días hábiles.`;
+
+  alert("Su comunicación fue registrada con el código: " + cod + ". Conserve este código para seguimiento.");
+
+  window.location.href =
+    "mailto:virexagroup.pe@gmail.com?subject=Libro de Reclamaciones - " + cod +
+    "&body=" + encodeURIComponent(body);
+}
+</script>
+
+</body>
+</html>
