@@ -145,6 +145,11 @@ footer a{display:block;margin:7px 0;color:#d7dee8}
           <div>
             <label>Correo electrónico *</label>
             <input id="correo" type="email" required>
+          
+            <small id="correoAviso" style="display:none;color:#b7791f;font-size:13px;margin-top:6px;">
+            Recomendamos utilizar un correo corporativo para agilizar la validación comercial.
+            </small>
+            
           </div>
           <div>
             <label>Teléfono / WhatsApp *</label>
@@ -432,6 +437,32 @@ ${detalle.value}`;
     "mailto:virexagroup.pe@gmail.com?subject=Solicitud de cotización - " + codigo +
     "&body=" + encodeURIComponent(body);
 }
+
+}
+
+const correo = document.getElementById("correo");
+const correoAviso = document.getElementById("correoAviso");
+
+correo.addEventListener("input", function () {
+
+    const valor = this.value.toLowerCase();
+
+    const personales = [
+        "gmail.com",
+        "hotmail.com",
+        "outlook.com",
+        "live.com",
+        "yahoo.com"
+    ];
+
+    const esPersonal = personales.some(dominio =>
+        valor.endsWith("@" + dominio)
+    );
+
+    correoAviso.style.display =
+        esPersonal ? "block" : "none";
+
+});
 
 initMonths();
 renderCalendar();
