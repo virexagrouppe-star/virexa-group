@@ -439,33 +439,41 @@ ${detalle.value}`;
 }
 
 }
+document.addEventListener("DOMContentLoaded", function () {
 
-const correo = document.getElementById("correo");
-const correoAviso = document.getElementById("correoAviso");
+    initMonths();
+    renderCalendar();
 
-correo.addEventListener("input", function () {
+    const correoInput = document.getElementById("correo");
+    const correoAviso = document.getElementById("correoAviso");
 
-    const valor = this.value.toLowerCase();
+    if (correoInput && correoAviso) {
 
-    const personales = [
-        "gmail.com",
-        "hotmail.com",
-        "outlook.com",
-        "live.com",
-        "yahoo.com"
-    ];
+        correoInput.addEventListener("input", function () {
 
-    const esPersonal = personales.some(dominio =>
-        valor.endsWith("@" + dominio)
-    );
+            const valor = this.value.toLowerCase();
 
-    correoAviso.style.display =
-        esPersonal ? "block" : "none";
+            const personales = [
+                "gmail.com",
+                "hotmail.com",
+                "outlook.com",
+                "live.com",
+                "yahoo.com"
+            ];
+
+            const esPersonal = personales.some(dominio =>
+                valor.endsWith("@" + dominio)
+            );
+
+            correoAviso.style.display =
+                esPersonal ? "block" : "none";
+
+        });
+
+    }
 
 });
 
-initMonths();
-renderCalendar();
 </script>
 
 </body>
