@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitud de Cotización | Virexa Group</title>
+<meta name="description" content="Solicita una cotización a Virexa Group y revisa fechas referenciales para planificar requerimientos corporativos.">
+
+<style>
+:root{
+  --navy:#061f3c;
+  --navy2:#0a3d78;
+  --gray:#667085;
+  --soft:#f4f7fb;
+  --line:#d9e1ea;
+  --text:#101828;
+  --red:#b42318;
+  --gold:#b7791f;
+  --blue:#0b4ea2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--soft);line-height:1.5}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+
+header{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-weight:900;color:var(--navy);letter-spacing:.08em;line-height:1.05}
+.logo small{display:block;font-size:11px;color:var(--gray);letter-spacing:.12em;margin-top:4px}
+.btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:800;border:0;cursor:pointer}
+.btn-primary{background:var(--navy);color:white}
+.btn-light{background:white;color:var(--navy);border:1px solid var(--line)}
+
+.hero{background:linear-gradient(135deg,#061f3c,#0a3d78);color:white;padding:70px 0}
+.hero h1{font-size:clamp(38px,5vw,62px);line-height:1.05;margin:0 0 16px}
+.hero p{font-size:20px;max-width:820px;color:#dbe7f5}
+
+.main{padding:55px 0}
+.layout{display:grid;grid-template-columns:1fr .95fr;gap:28px;align-items:start}
+
+.card{background:white;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 16px 40px rgba(16,24,40,.06)}
+h2{font-size:32px;color:#0b1f3a;margin:0 0 10px}
+.lead{color:var(--gray);font-size:17px;margin-bottom:22px}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-weight:700;font-size:14px;display:block;margin:14px 0 6px;color:#172033}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-family:inherit;font-size:15px;background:white}
+textarea{min-height:130px;resize:vertical}
+.counter{text-align:right;color:var(--gray);font-size:12px;margin-top:4px}
+.note{background:#eef4ff;border:1px solid #c7d7fe;border-radius:14px;padding:14px;color:#12346b;margin:18px 0}
+
+.calendar-tools{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.legend span{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line)}
+.nacional{background:#fff1f0;color:var(--red)}
+.regional{background:#fff8e6;color:var(--gold)}
+.oportunidad{background:#eef4ff;color:var(--blue)}
+.regular{background:#f7f7f7;color:#344054}
+
+.month-title{font-size:22px;font-weight:900;color:var(--navy);margin:20px 0 12px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.day-head{font-weight:800;font-size:12px;color:#475467;text-align:center;padding:8px 0}
+.day{min-height:78px;background:white;border:1px solid var(--line);border-radius:12px;padding:8px;font-size:13px;position:relative}
+.day.empty{background:#f8fafc;border:1px dashed #e4e7ec}
+.day strong{display:block;color:#101828}
+.tag{display:block;margin-top:5px;font-size:10px;line-height:1.2;padding:3px 5px;border-radius:6px}
+.tag.nacional{background:#fff1f0;color:var(--red)}
+.tag.regional{background:#fff8e6;color:var(--gold)}
+.tag.oportunidad{background:#eef4ff;color:var(--blue)}
+.event-list{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.event-item{padding:10px 0;border-bottom:1px solid #eef2f6;font-size:14px}
+.event-item b{color:var(--navy)}
+
+footer{background:#07111f;color:#d7dee8;padding:36px 0;margin-top:45px}
+.footer{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:24px}
+footer h3,footer b{color:white}
+footer a{display:block;margin:7px 0;color:#d7dee8}
+
+@media(max-width:950px){
+  .layout,.form-grid,.calendar-tools,.footer{grid-template-columns:1fr}
+  .calendar{gap:4px}
+  .day{min-height:70px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      VIREXA GROUP
+      <small>PROVEEDOR ESTRATÉGICO EMPRESARIAL</small>
+    </a>
+    <a class="btn btn-light" href="index.html">Volver al inicio</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Solicitud de cotización</h1>
+    <p>Cuéntanos tu requerimiento. Antes de enviar, revisa el calendario referencial para planificar mejor tus tiempos, campañas, entregas y fechas críticas por región.</p>
+  </div>
+</section>
+
+<main class="main">
+  <div class="container layout">
+
+    <section class="card">
+      <h2>Datos del requerimiento</h2>
+      <p class="lead">Usa este formulario para iniciar una evaluación comercial. Al enviar, se generará un código único de solicitud.</p>
+
+      <form onsubmit="sendQuote(event)">
+        <div class="form-grid">
+          <div>
+            <label>Empresa o razón social *</label>
+            <input id="empresa" required>
+          </div>
+          <div>
+            <label>RUC</label>
+            <input id="ruc" maxlength="11" oninput="soloNumeros(this,11)">
+          </div>
+          <div>
+            <label>Nombre de contacto *</label>
+            <input id="contacto" required>
+          </div>
+          <div>
+            <label>Cargo / Área</label>
+            <input id="cargo" placeholder="Compras, logística, administración, gerencia...">
+          </div>
+          <div>
+            <label>Correo electrónico *</label>
+            <input id="correo" type="email" required>
+          </div>
+          <div>
+            <label>Teléfono / WhatsApp *</label>
+            <input id="telefono" maxlength="9" required oninput="soloNumeros(this,9)">
+          </div>
+          <div>
+            <label>Región de entrega o atención</label>
+            <select id="regionForm">
+              <option value="">Seleccionar si aplica</option>
+              <option>Lima</option>
+              <option>Arequipa</option>
+              <option>Cajamarca</option>
+              <option>Cusco</option>
+              <option>Ica</option>
+              <option>Junín</option>
+              <option>La Libertad</option>
+              <option>Moquegua</option>
+              <option>Piura</option>
+              <option>Puno</option>
+              <option>Tacna</option>
+              <option>Otra región</option>
+            </select>
+          </div>
+          <div>
+            <label>Fecha ideal de entrega</label>
+            <input id="fechaEntrega" type="date">
+          </div>
+        </div>
+
+        <label>Describe brevemente tu requerimiento *</label>
+        <textarea id="detalle" maxlength="1000" required oninput="updateCounter()" placeholder="Ejemplo: cantidad aproximada, uso, lugar de entrega, fecha objetivo, ficha técnica, marca referencial o condiciones importantes."></textarea>
+        <div class="counter"><span id="contador">1000</span> caracteres restantes</div>
+
+        <div class="note">
+          Para requerimientos con fechas cercanas a feriados, campañas regionales o festividades locales, recomendamos considerar mayor anticipación. Los plazos finales dependerán del alcance, disponibilidad, volumen, personalización y lugar de entrega.
+        </div>
+
+        <label>
+          <input type="checkbox" required style="width:auto">
+          Declaro que la información proporcionada es verdadera.
+        </label>
+
+        <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+      </form>
+    </section>
+
+    <aside class="card">
+      <h2>Calendario referencial</h2>
+      <p class="lead">Fechas nacionales, regionales y oportunidades comerciales que pueden influir en planificación, entregas o campañas.</p>
+
+      <div class="calendar-tools">
+        <div>
+          <label>Mes</label>
+          <select id="monthSelect" onchange="renderCalendar()"></select>
+        </div>
+        <div>
+          <label>Región</label>
+          <select id="regionSelect" onchange="renderCalendar()">
+            <option value="Todas">Todas</option>
+            <option value="Nacional">Nacional</option>
+            <option value="Lima">Lima</option>
+            <option value="Arequipa">Arequipa</option>
+            <option value="Cajamarca">Cajamarca</option>
+            <option value="Cusco">Cusco</option>
+            <option value="Ica">Ica</option>
+            <option value="Junín">Junín</option>
+            <option value="La Libertad">La Libertad</option>
+            <option value="Moquegua">Moquegua</option>
+            <option value="Piura">Piura</option>
+            <option value="Puno">Puno</option>
+            <option value="Tacna">Tacna</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span class="nacional">Feriado nacional</span>
+        <span class="regional">Regional / local</span>
+        <span class="oportunidad">Oportunidad comercial</span>
+        <span class="regular">Referencial</span>
+      </div>
+
+      <div class="month-title" id="monthTitle"></div>
+      <div class="calendar" id="calendar"></div>
+
+      <div class="event-list" id="eventList"></div>
+
+      <div class="note">
+        Calendario referencial no legal. Las fechas deben validarse según normativa vigente, región, cliente, sector y alcance del requerimiento.
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <h3>VIREXA GROUP</h3>
+      <p>Marca comercial de Yakar Negocios E.I.R.L.</p>
+      <p>Proveedor Estratégico Empresarial.</p>
+    </div>
+    <div>
+      <b>Contacto</b>
+      <a href="tel:+51973669004">+51 973 669 004</a>
+      <a href="mailto:virexagroup.pe@gmail.com">virexagroup.pe@gmail.com</a>
+      <p>Lima Metropolitana – Perú</p>
+      <p>Atención presencial previa coordinación.</p>
+    </div>
+    <div>
+      <b>Enlaces</b>
+      <a href="index.html">Inicio</a>
+      <a href="libro-reclamaciones.html" target="_blank">Libro de Reclamaciones</a>
+      <a href="gobierno-integridad.html">Gobierno e Integridad</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const year = new Date().getFullYear();
+
+const eventosBase = [
+  {date:"01-01", title:"Año Nuevo", region:"Nacional", type:"nacional"},
+  {date:"03-28", title:"Semana Santa / Viernes Santo referencial", region:"Nacional", type:"nacional"},
+  {date:"05-01", title:"Día del Trabajo", region:"Nacional", type:"nacional"},
+  {date:"06-29", title:"San Pedro y San Pablo", region:"Nacional", type:"nacional"},
+  {date:"07-28", title:"Fiestas Patrias", region:"Nacional", type:"nacional"},
+  {date:"07-29", title:"Fiestas Patrias", region:"Nacional", type:"nacional"},
+  {date:"08-30", title:"Santa Rosa de Lima", region:"Nacional", type:"nacional"},
+  {date:"10-08", title:"Combate de Angamos", region:"Nacional", type:"nacional"},
+  {date:"11-01", title:"Todos los Santos", region:"Nacional", type:"nacional"},
+  {date:"12-08", title:"Inmaculada Concepción", region:"Nacional", type:"nacional"},
+  {date:"12-25", title:"Navidad", region:"Nacional", type:"nacional"},
+
+  {date:"02-02", title:"Virgen de la Candelaria / alta actividad regional", region:"Puno", type:"regional"},
+  {date:"02-15", title:"Carnaval de Cajamarca / campaña regional", region:"Cajamarca", type:"regional"},
+  {date:"06-19", title:"Corpus Christi / campaña regional", region:"Cusco", type:"regional"},
+  {date:"08-15", title:"Aniversario de Arequipa", region:"Arequipa", type:"regional"},
+  {date:"06-24", title:"Inti Raymi / campaña turística regional", region:"Cusco", type:"regional"},
+  {date:"09-24", title:"Virgen de las Mercedes / festividad regional", region:"La Libertad", type:"regional"},
+  {date:"10-31", title:"Campaña cierre octubre / activaciones", region:"Lima", type:"oportunidad"},
+  {date:"12-01", title:"Campaña navideña corporativa", region:"Nacional", type:"oportunidad"},
+  {date:"03-01", title:"Inicio de campañas escolares / institucionales", region:"Nacional", type:"oportunidad"},
+  {date:"07-01", title:"Preparación Fiestas Patrias / textiles, merchandising y eventos", region:"Nacional", type:"oportunidad"},
+  {date:"09-01", title:"Planeamiento Q4 / compras corporativas", region:"Nacional", type:"oportunidad"},
+  {date:"11-15", title:"Cierre de año / abastecimiento y regalos corporativos", region:"Nacional", type:"oportunidad"},
+
+  {date:"05-20", title:"Ventana comercial minera e industrial / validar por zona", region:"Arequipa", type:"oportunidad"},
+  {date:"05-22", title:"Ventana comercial minera e industrial / validar por zona", region:"Moquegua", type:"oportunidad"},
+  {date:"05-24", title:"Ventana comercial minera e industrial / validar por zona", region:"Cajamarca", type:"oportunidad"},
+  {date:"05-26", title:"Ventana comercial minera e industrial / validar por zona", region:"Puno", type:"oportunidad"},
+  {date:"05-28", title:"Ventana comercial minera e industrial / validar por zona", region:"Junín", type:"oportunidad"},
+  {date:"08-01", title:"Campañas regionales de seguridad, EPP y equipamiento", region:"Nacional", type:"oportunidad"}
+];
+
+const monthNames = [
+  "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+  "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+];
+
+function initMonths(){
+  const select = document.getElementById("monthSelect");
+  const currentMonth = new Date().getMonth();
+  monthNames.forEach((m,i)=>{
+    const op = document.createElement("option");
+    op.value = i;
+    op.textContent = m + " " + year;
+    if(i === currentMonth) op.selected = true;
+    select.appendChild(op);
+  });
+}
+
+function getEventsForDay(month,day,region){
+  const key = String(month+1).padStart(2,"0")+"-"+String(day).padStart(2,"0");
+  return eventosBase.filter(e=>{
+    const matchDate = e.date === key;
+    const matchRegion = region === "Todas" || e.region === region || e.region === "Nacional";
+    return matchDate && matchRegion;
+  });
+}
+
+function renderCalendar(){
+  const month = parseInt(document.getElementById("monthSelect").value);
+  const region = document.getElementById("regionSelect").value;
+  const calendar = document.getElementById("calendar");
+  const eventList = document.getElementById("eventList");
+  const monthTitle = document.getElementById("monthTitle");
+
+  calendar.innerHTML = "";
+  eventList.innerHTML = "";
+  monthTitle.textContent = monthNames[month] + " " + year;
+
+  const heads = ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
+  heads.forEach(h=>{
+    const div = document.createElement("div");
+    div.className = "day-head";
+    div.textContent = h;
+    calendar.appendChild(div);
+  });
+
+  const first = new Date(year,month,1);
+  let start = first.getDay();
+  start = start === 0 ? 6 : start - 1;
+
+  const days = new Date(year,month+1,0).getDate();
+
+  for(let i=0;i<start;i++){
+    const empty = document.createElement("div");
+    empty.className = "day empty";
+    calendar.appendChild(empty);
+  }
+
+  const monthEvents = [];
+
+  for(let d=1; d<=days; d++){
+    const events = getEventsForDay(month,d,region);
+    const cell = document.createElement("div");
+    cell.className = "day";
+    cell.innerHTML = "<strong>"+d+"</strong>";
+
+    events.forEach(ev=>{
+      const tag = document.createElement("span");
+      tag.className = "tag " + ev.type;
+      tag.textContent = ev.title;
+      cell.appendChild(tag);
+      monthEvents.push({day:d,...ev});
+    });
+
+    calendar.appendChild(cell);
+  }
+
+  if(monthEvents.length === 0){
+    eventList.innerHTML = "<div class='event-item'>No hay eventos referenciales registrados para este filtro.</div>";
+  }else{
+    monthEvents.forEach(ev=>{
+      const div = document.createElement("div");
+      div.className = "event-item";
+      div.innerHTML = "<b>"+String(ev.day).padStart(2,"0")+" "+monthNames[month]+":</b> "+ev.title+" · "+ev.region;
+      eventList.appendChild(div);
+    });
+  }
+}
+
+function soloNumeros(input,max){
+  input.value = input.value.replace(/[^0-9]/g,'').slice(0,max);
+}
+
+function updateCounter(){
+  const max = 1000;
+  const used = document.getElementById("detalle").value.length;
+  document.getElementById("contador").textContent = max - used;
+}
+
+function codigoSolicitud(){
+  const fecha = new Date();
+  const y = fecha.getFullYear();
+  const suffix = fecha.getTime().toString().slice(-6);
+  return "SC-" + y + "-" + suffix;
+}
+
+function sendQuote(e){
+  e.preventDefault();
+  const codigo = codigoSolicitud();
+
+  const body =
+`Solicitud de cotización Virexa Group
+
+Código único: ${codigo}
+
+Empresa o razón social: ${empresa.value}
+RUC: ${ruc.value}
+Contacto: ${contacto.value}
+Cargo / Área: ${cargo.value}
+Correo: ${correo.value}
+Teléfono: ${telefono.value}
+Región de entrega o atención: ${regionForm.value}
+Fecha ideal de entrega: ${fechaEntrega.value}
+
+Detalle del requerimiento:
+${detalle.value}`;
+
+  alert("Su solicitud fue registrada con el código: " + codigo + ". Conserve este código para seguimiento.");
+
+  window.location.href =
+    "mailto:virexagroup.pe@gmail.com?subject=Solicitud de cotización - " + codigo +
+    "&body=" + encodeURIComponent(body);
+}
+
+initMonths();
+renderCalendar();
+</script>
+
+</body>
+</html>
