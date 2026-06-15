@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Iniciar un Requerimiento | Virexa Group</title>
 <meta name="description" content="Registra tu requerimiento empresarial en Virexa Group. Planifica entregas, campañas y fechas críticas mediante un proceso con seguimiento y trazabilidad.">
 
@@ -33,7 +34,7 @@ header{background:white;border-bottom:1px solid var(--line);position:sticky;top:
 .btn-light{background:white;color:var(--navy);border:1px solid var(--line)}
 
 .hero{background:linear-gradient(135deg,#061f3c,#0a3d78);color:white;padding:70px 0}
-.hero h1{font-size:clamp(38px,5vw,62px);line-height:1.05;margin:0 0 16px}
+.hero h1{font-size:clamp(40px,5vw,64px);line-height:1.05;margin:0 0 18px}
 .hero p{font-size:20px;max-width:820px;color:#dbe7f5}
 
 .main{padding:55px 0}
@@ -43,24 +44,25 @@ header{background:white;border-bottom:1px solid var(--line);position:sticky;top:
 h2{font-size:32px;color:#0b1f3a;margin:0 0 10px}
 .lead{color:var(--gray);font-size:17px;margin-bottom:22px}
 
+.privacy-note{
+  margin:14px 0 18px;
+  padding:12px 14px;
+  background:#f4f7fb;
+  border-left:4px solid #0b4ea2;
+  border-radius:8px;
+  font-size:14px;
+  color:#566273;
+  line-height:1.5;
+}
+
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 label{font-weight:700;font-size:14px;display:block;margin:14px 0 6px;color:#172033}
 input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-family:inherit;font-size:15px;background:white}
 textarea{min-height:130px;resize:vertical}
 .counter{text-align:right;color:var(--gray);font-size:12px;margin-top:4px}
 .note{background:#eef4ff;border:1px solid #c7d7fe;border-radius:14px;padding:14px;color:#12346b;margin:18px 0}
+.email-warning{display:none;color:#b7791f;font-size:13px;margin-top:6px;line-height:1.4}
 
-.privacy-note{
-    margin:14px 0 18px;
-    padding:12px 14px;
-    background:#f4f7fb;
-    border-left:4px solid #0b4ea2;
-    border-radius:8px;
-    font-size:14px;
-    color:#566273;
-    line-height:1.5;
-}
-  
 .calendar-tools{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .legend span{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line)}
@@ -86,7 +88,8 @@ textarea{min-height:130px;resize:vertical}
 footer{background:#07111f;color:#d7dee8;padding:36px 0;margin-top:45px}
 .footer{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:24px}
 footer h3,footer b{color:white}
-footer a{display:block;margin:7px 0;color:#d7dee8}
+footer a{display:block;margin:7px 0;color:#d7dee8;transition:all .25s ease}
+footer a:hover{color:#ffffff;transform:translateX(3px)}
 
 @media(max-width:950px){
   .layout,.form-grid,.calendar-tools,.footer{grid-template-columns:1fr}
@@ -121,9 +124,11 @@ footer a{display:block;margin:7px 0;color:#d7dee8}
     <section class="card">
       <h2>Datos del requerimiento</h2>
       <p class="lead">Registra tu requerimiento empresarial. Al enviarlo, recibirás un código único para seguimiento y trazabilidad.</p>
+
       <p class="privacy-note">
-      Tu información será utilizada únicamente para evaluar y gestionar su requerimiento empresarial. Virexa Group no comparte datos con terceros y aplica criterios de confidencialidad y tratamiento responsable de la información.
+        Tu información será utilizada únicamente para evaluar y gestionar su requerimiento empresarial. Virexa Group no comparte datos con terceros y aplica criterios de confidencialidad y tratamiento responsable de la información.
       </p>
+
       <form onsubmit="sendQuote(event)">
         <div class="form-grid">
           <div>
@@ -145,11 +150,9 @@ footer a{display:block;margin:7px 0;color:#d7dee8}
           <div>
             <label>Correo electrónico *</label>
             <input id="correo" type="email" required>
-          
-            <small id="correoAviso" style="display:none;color:#b7791f;font-size:13px;margin-top:6px;">
-            Recomendamos utilizar un correo corporativo para agilizar la validación comercial.
+            <small id="correoAviso" class="email-warning">
+              Recomendamos utilizar un correo corporativo para agilizar la validación comercial. Si actualmente utiliza un correo personal, su requerimiento será atendido con normalidad.
             </small>
-            
           </div>
           <div>
             <label>Teléfono / WhatsApp *</label>
@@ -192,7 +195,7 @@ footer a{display:block;margin:7px 0;color:#d7dee8}
           Declaro que la información proporcionada es verdadera.
         </label>
 
-        <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+        <button class="btn btn-primary" type="submit">Enviar requerimiento</button>
       </form>
     </section>
 
@@ -203,11 +206,11 @@ footer a{display:block;margin:7px 0;color:#d7dee8}
       <div class="calendar-tools">
         <div>
           <label>Mes</label>
-          <select id="monthSelect" onchange="renderCalendar()"></select>
+          <select id="monthSelect"></select>
         </div>
         <div>
           <label>Región</label>
-          <select id="regionSelect" onchange="renderCalendar()">
+          <select id="regionSelect">
             <option value="Todas">Todas</option>
             <option value="Nacional">Nacional</option>
             <option value="Lima">Lima</option>
@@ -234,7 +237,6 @@ footer a{display:block;margin:7px 0;color:#d7dee8}
 
       <div class="month-title" id="monthTitle"></div>
       <div class="calendar" id="calendar"></div>
-
       <div class="event-list" id="eventList"></div>
 
       <div class="note">
@@ -273,7 +275,6 @@ const year = new Date().getFullYear();
 
 const eventosBase = [
   {date:"01-01", title:"Año Nuevo", region:"Nacional", type:"nacional"},
-  {date:"03-28", title:"Semana Santa / Viernes Santo referencial", region:"Nacional", type:"nacional"},
   {date:"05-01", title:"Día del Trabajo", region:"Nacional", type:"nacional"},
   {date:"06-29", title:"San Pedro y San Pablo", region:"Nacional", type:"nacional"},
   {date:"07-28", title:"Fiestas Patrias", region:"Nacional", type:"nacional"},
@@ -287,32 +288,27 @@ const eventosBase = [
   {date:"02-02", title:"Virgen de la Candelaria / alta actividad regional", region:"Puno", type:"regional"},
   {date:"02-15", title:"Carnaval de Cajamarca / campaña regional", region:"Cajamarca", type:"regional"},
   {date:"06-19", title:"Corpus Christi / campaña regional", region:"Cusco", type:"regional"},
-  {date:"08-15", title:"Aniversario de Arequipa", region:"Arequipa", type:"regional"},
   {date:"06-24", title:"Inti Raymi / campaña turística regional", region:"Cusco", type:"regional"},
-  {date:"09-24", title:"Virgen de las Mercedes / festividad regional", region:"La Libertad", type:"regional"},
-  {date:"10-31", title:"Campaña cierre octubre / activaciones", region:"Lima", type:"oportunidad"},
-  {date:"12-01", title:"Campaña navideña corporativa", region:"Nacional", type:"oportunidad"},
-  {date:"03-01", title:"Inicio de campañas escolares / institucionales", region:"Nacional", type:"oportunidad"},
-  {date:"07-01", title:"Preparación Fiestas Patrias / textiles, merchandising y eventos", region:"Nacional", type:"oportunidad"},
+  {date:"08-15", title:"Aniversario de Arequipa", region:"Arequipa", type:"regional"},
+
+  {date:"03-01", title:"Campaña escolar e institucional", region:"Nacional", type:"oportunidad"},
+  {date:"05-20", title:"Ventana comercial minera e industrial", region:"Arequipa", type:"oportunidad"},
+  {date:"05-22", title:"Ventana comercial minera e industrial", region:"Moquegua", type:"oportunidad"},
+  {date:"05-24", title:"Ventana comercial minera e industrial", region:"Cajamarca", type:"oportunidad"},
+  {date:"05-26", title:"Ventana comercial minera e industrial", region:"Puno", type:"oportunidad"},
+  {date:"07-01", title:"Preparación Fiestas Patrias", region:"Nacional", type:"oportunidad"},
   {date:"09-01", title:"Planeamiento Q4 / compras corporativas", region:"Nacional", type:"oportunidad"},
-  {date:"11-15", title:"Cierre de año / abastecimiento y regalos corporativos", region:"Nacional", type:"oportunidad"},
-
-  {date:"05-20", title:"Ventana comercial minera e industrial / validar por zona", region:"Arequipa", type:"oportunidad"},
-  {date:"05-22", title:"Ventana comercial minera e industrial / validar por zona", region:"Moquegua", type:"oportunidad"},
-  {date:"05-24", title:"Ventana comercial minera e industrial / validar por zona", region:"Cajamarca", type:"oportunidad"},
-  {date:"05-26", title:"Ventana comercial minera e industrial / validar por zona", region:"Puno", type:"oportunidad"},
-  {date:"05-28", title:"Ventana comercial minera e industrial / validar por zona", region:"Junín", type:"oportunidad"},
-  {date:"08-01", title:"Campañas regionales de seguridad, EPP y equipamiento", region:"Nacional", type:"oportunidad"}
+  {date:"11-15", title:"Cierre de año / abastecimiento corporativo", region:"Nacional", type:"oportunidad"},
+  {date:"12-01", title:"Campaña navideña corporativa", region:"Nacional", type:"oportunidad"}
 ];
 
-const monthNames = [
-  "Enero","Febrero","Marzo","Abril","Mayo","Junio",
-  "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
-];
+const monthNames = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
 function initMonths(){
   const select = document.getElementById("monthSelect");
+  select.innerHTML = "";
   const currentMonth = new Date().getMonth();
+
   monthNames.forEach((m,i)=>{
     const op = document.createElement("option");
     op.value = i;
@@ -342,8 +338,7 @@ function renderCalendar(){
   eventList.innerHTML = "";
   monthTitle.textContent = monthNames[month] + " " + year;
 
-  const heads = ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
-  heads.forEach(h=>{
+  ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"].forEach(h=>{
     const div = document.createElement("div");
     div.className = "day-head";
     div.textContent = h;
@@ -353,7 +348,6 @@ function renderCalendar(){
   const first = new Date(year,month,1);
   let start = first.getDay();
   start = start === 0 ? 6 : start - 1;
-
   const days = new Date(year,month+1,0).getDate();
 
   for(let i=0;i<start;i++){
@@ -405,17 +399,14 @@ function updateCounter(){
 
 function codigoSolicitud(){
   const fecha = new Date();
-  const y = fecha.getFullYear();
-  const suffix = fecha.getTime().toString().slice(-6);
-  return "SC-" + y + "-" + suffix;
+  return "SC-" + fecha.getFullYear() + "-" + fecha.getTime().toString().slice(-6);
 }
 
 function sendQuote(e){
   e.preventDefault();
   const codigo = codigoSolicitud();
 
-  const body =
-`Solicitud de cotización Virexa Group
+  const body = `Requerimiento empresarial Virexa Group
 
 Código único: ${codigo}
 
@@ -431,49 +422,30 @@ Fecha ideal de entrega: ${fechaEntrega.value}
 Detalle del requerimiento:
 ${detalle.value}`;
 
-  alert("Su solicitud fue registrada con el código: " + codigo + ". Conserve este código para seguimiento.");
+  alert("Su requerimiento fue registrado con el código: " + codigo + ". Conserve este código para seguimiento.");
 
   window.location.href =
-    "mailto:virexagroup.pe@gmail.com?subject=Solicitud de cotización - " + codigo +
+    "mailto:virexagroup.pe@gmail.com?subject=Requerimiento empresarial - " + codigo +
     "&body=" + encodeURIComponent(body);
 }
 
-}
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function(){
+  initMonths();
+  renderCalendar();
 
-    initMonths();
-    renderCalendar();
+  document.getElementById("monthSelect").addEventListener("change", renderCalendar);
+  document.getElementById("regionSelect").addEventListener("change", renderCalendar);
 
-    const correoInput = document.getElementById("correo");
-    const correoAviso = document.getElementById("correoAviso");
+  const correoInput = document.getElementById("correo");
+  const correoAviso = document.getElementById("correoAviso");
 
-    if (correoInput && correoAviso) {
-
-        correoInput.addEventListener("input", function () {
-
-            const valor = this.value.toLowerCase();
-
-            const personales = [
-                "gmail.com",
-                "hotmail.com",
-                "outlook.com",
-                "live.com",
-                "yahoo.com"
-            ];
-
-            const esPersonal = personales.some(dominio =>
-                valor.endsWith("@" + dominio)
-            );
-
-            correoAviso.style.display =
-                esPersonal ? "block" : "none";
-
-        });
-
-    }
-
+  correoInput.addEventListener("input", function(){
+    const valor = this.value.toLowerCase();
+    const personales = ["gmail.com","hotmail.com","outlook.com","live.com","yahoo.com"];
+    const esPersonal = personales.some(dominio => valor.endsWith("@" + dominio));
+    correoAviso.style.display = esPersonal ? "block" : "none";
+  });
 });
-
 </script>
 
 </body>
