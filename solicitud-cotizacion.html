@@ -474,13 +474,6 @@ Fecha ideal de entrega: ${fechaEntrega.value}
 Detalle del requerimiento:
 ${detalle.value}`;
 
-  alert(
-"Su requerimiento fue registrado con el código: " +
-codigo +
-". Conserve este código para seguimiento.\n\n" +
-"Al continuar se abrirá su aplicación de correo electrónico para remitir la solicitud a Virexa Group."
-);
-
   fetch("https://script.google.com/macros/s/AKfycbwyl0AqtvLceVbd7EprKU7jKCK4TX9o9Zyv7Ab6PRoXCKCqEZ8FxShhG7Y1VzQ_Az0/exec", {
   method: "POST",
   mode: "no-cors",
