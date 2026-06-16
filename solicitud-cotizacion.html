@@ -418,9 +418,18 @@ function updateCounter(){
   document.getElementById("contador").textContent = max - used;
 }
 
-function codigoSolicitud(){
-  const fecha = new Date();
-  return "SC-" + fecha.getFullYear() + "-" + fecha.getTime().toString().slice(-6);
+function codigoSolicitud() {
+
+    const ahora = new Date();
+
+    const yyyy = ahora.getFullYear();
+    const mm = String(ahora.getMonth() + 1).padStart(2, "0");
+    const dd = String(ahora.getDate()).padStart(2, "0");
+    const hh = String(ahora.getHours()).padStart(2, "0");
+    const mi = String(ahora.getMinutes()).padStart(2, "0");
+    const ss = String(ahora.getSeconds()).padStart(2, "0");
+
+    return `VX-REQ-${yyyy}${mm}${dd}-${hh}${mi}${ss}`;
 }
 
 function sendQuote(e){
