@@ -481,9 +481,31 @@ codigo +
 "Al continuar se abrirá su aplicación de correo electrónico para remitir la solicitud a Virexa Group."
 );
 
-  window.location.href =
-    "mailto:virexagroup.pe@gmail.com?subject=Requerimiento empresarial - " + codigo +
-    "&body=" + encodeURIComponent(body);
+  fetch("https://script.google.com/macros/s/AKfycbwyl0AqtvLceVbd7EprKU7jKCK4TX9o9Zyv7Ab6PRoXCKCqEZ8FxShhG7Y1VzQ_Az0/exec", {
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "text/plain;charset=utf-8"
+  },
+  body: JSON.stringify({
+    codigo: codigo,
+    empresa: empresa.value,
+    ruc: ruc.value,
+    contacto: contacto.value,
+    cargo: cargo.value,
+    correo: correo.value,
+    telefono: telefono.value,
+    region: regionForm.value,
+    fechaEntrega: fechaEntrega.value,
+    detalle: detalle.value
+  })
+});
+
+alert(
+  "Su requerimiento fue registrado con el código: " +
+  codigo +
+  ".\n\nVirexa Group revisará la información y se comunicará con usted para continuar la atención."
+);
 }
 
 document.addEventListener("DOMContentLoaded", function(){
