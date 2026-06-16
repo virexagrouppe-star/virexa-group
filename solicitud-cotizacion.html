@@ -135,7 +135,7 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
       margin-top:8px;
       margin-bottom:18px;
     ">
-    (*) Campos obligatorios. La información proporcionada será utilizada únicamente para gestionar su requerimiento.
+    (*) Los campos marcados con asterisco son obligatorios..
   </p>
 
       <form onsubmit="sendQuote(event)">
@@ -152,7 +152,7 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
             minlength="11"
             required
             oninput="soloNumeros(this,11)"
-            placeholder="11 dígitos">
+            placeholder="Ej.: 20123456789">
           </div>
           <div>
             <label>Nombre de contacto *</label>
@@ -176,7 +176,7 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
             maxlength="9"
             minlength="9"
             required
-            placeholder="9 dígitos"
+            placeholder="Ej.: 987654321"
             oninput="soloNumeros(this,9)">
           </div>
           <div>
@@ -204,7 +204,7 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
         </div>
 
         <label>Describe brevemente tu requerimiento *</label>
-        <textarea id="detalle" maxlength="1000" required oninput="updateCounter()" placeholder="Ejemplo: cantidad aproximada, uso, lugar de entrega, fecha objetivo, ficha técnica, marca referencial o condiciones importantes."></textarea>
+        <textarea id="detalle" maxlength="1000" required oninput="updateCounter()" placeholder="Ej.: 200 cascos de seguridad, Lima, entrega en 15 días, color azul, con certificación ANSI. También puede indicar una necesidad simple, por ejemplo: Cotizar un tirfor de 3 toneladas."></textarea>
         <div class="counter"><span id="contador">1000</span> caracteres restantes</div>
 
         <div class="note">
