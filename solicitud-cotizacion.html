@@ -650,7 +650,22 @@ document.addEventListener("DOMContentLoaded", function(){
 }
 
 function closeSuccessModal(){
-  document.getElementById("successModal").style.display = "none";
+
+    document.getElementById("successModal").style.display = "none";
+
+    setTimeout(() => {
+
+        document.getElementById("requerimientoForm")
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        setTimeout(() => {
+            document.getElementById("empresa").focus();
+        }, 400);
+
+    }, 150);
 }
 
 function copySuccessCode(){
