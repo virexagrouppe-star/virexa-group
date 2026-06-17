@@ -96,11 +96,138 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
   .calendar{gap:4px}
   .day{min-height:70px;font-size:12px}
 }
+  .success-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(1,17,35,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:20px;
+}
+
+.success-box{
+  background:white;
+  width:min(520px,100%);
+  border-radius:22px;
+  padding:32px;
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+  text-align:center;
+  border:1px solid #d9e1ea;
+}
+
+.success-icon{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:#e8f5ee;
+  color:#0f8a4b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:900;
+  margin:0 auto 16px;
+}
+
+.success-box h2{
+  margin:0 0 10px;
+  color:#061f3c;
+  font-size:26px;
+}
+
+.success-box p{
+  color:#566273;
+  margin:8px 0;
+  line-height:1.5;
+}
+
+.success-code{
+  margin:20px 0;
+  padding:18px;
+  border-radius:14px;
+  background:#f4f7fb;
+  border:1px solid #d9e1ea;
+}
+
+.success-code span{
+  display:block;
+  font-size:13px;
+  color:#667085;
+  margin-bottom:8px;
+}
+
+.success-code strong{
+  display:block;
+  font-size:22px;
+  color:#061f3c;
+  letter-spacing:.5px;
+  word-break:keep-all;
+  white-space:nowrap;
+}
+
+.success-actions{
+  display:grid;
+  gap:10px;
+  margin-top:22px;
+}
+
+.success-actions button,
+.success-actions a{
+  border:0;
+  border-radius:12px;
+  padding:13px 16px;
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:15px;
+}
+
+.copy-btn{
+  background:#061f3c;
+  color:white;
+}
+
+.secondary-btn{
+  background:#eef3f8;
+  color:#061f3c;
+}
+
+.home-btn{
+  background:white;
+  color:#061f3c;
+  border:1px solid #d9e1ea !important;
+}
 </style>
 </head>
 
 <body>
+<div id="successModal" class="success-modal">
+  <div class="success-box">
+    <div class="success-icon">✓</div>
 
+    <h2>Requerimiento registrado</h2>
+
+    <p>Hemos recibido tu requerimiento correctamente.</p>
+
+    <div class="success-code">
+      <span>Código de seguimiento</span>
+      <strong id="successCode">VX-REQ-00000000-000000</strong>
+    </div>
+
+    <p><strong>Estado inicial:</strong> RECIBIDO</p>
+    <p><strong>Tiempo estimado de primera respuesta:</strong> 24 a 48 horas hábiles.</p>
+
+    <div class="success-actions">
+      <button type="button" class="copy-btn" onclick="copySuccessCode()">Copiar código</button>
+      <button type="button" class="secondary-btn" onclick="closeSuccessModal()">Registrar otro requerimiento</button>
+      <a class="home-btn" href="index.html">Volver a Virexa Group</a>
+    </div>
+  </div>
+</div>
+  
 <header>
   <div class="container nav">
     <a href="index.html" class="logo">
@@ -494,11 +621,7 @@ ${detalle.value}`;
   })
 });
 
-alert(
-  "Su requerimiento fue registrado con el código: " +
-  codigo +
-  ".\n\nVirexa Group revisará la información y se comunicará con usted para continuar la atención."
-);
+openSuccessModal(codigo);
   document.getElementById("requerimientoForm").reset();
 renderCalendar();
 document.getElementById("contador").textContent = "1000";
@@ -521,6 +644,32 @@ document.addEventListener("DOMContentLoaded", function(){
     correoAviso.style.display = esPersonal ? "block" : "none";
   });
 });
+  function openSuccessModal(codigo){
+  document.getElementById("successCode").textContent = codigo;
+  document.getElementById("successModal").style.display = "flex";
+}
+
+function closeSuccessModal(){
+  document.getElementById("successModal").style.display = "none";
+}
+
+function copySuccessCode(){
+  const codigo =
+    document.getElementById("successCode").textContent;
+
+  navigator.clipboard.writeText(codigo);
+
+  const btn =
+    document.querySelector(".copy-btn");
+
+  const textoOriginal = btn.textContent;
+
+  btn.textContent = "✓ Código copiado";
+
+  setTimeout(() => {
+    btn.textContent = textoOriginal;
+  }, 2000);
+}
 </script>
 
 </body>
