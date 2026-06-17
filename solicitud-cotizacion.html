@@ -200,6 +200,27 @@ footer a:hover{color:#ffffff;transform:translateX(3px)}
   color:#061f3c;
   border:1px solid #d9e1ea !important;
 }
+.form-toast{
+  position:fixed;
+  left:50%;
+  bottom:28px;
+  transform:translateX(-50%) translateY(20px);
+  background:#061f3c;
+  color:white;
+  padding:14px 20px;
+  border-radius:999px;
+  font-weight:800;
+  box-shadow:0 18px 45px rgba(0,0,0,.22);
+  opacity:0;
+  pointer-events:none;
+  transition:all .3s ease;
+  z-index:10000;
+}
+
+.form-toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}  
 </style>
 </head>
 
@@ -655,15 +676,19 @@ function closeSuccessModal(){
 
     setTimeout(() => {
 
-        document.getElementById("requerimientoForm")
-            .scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        const formTop =
+            document.getElementById("requerimientoForm")
+                .getBoundingClientRect().top + window.pageYOffset - 120;
+
+        window.scrollTo({
+            top: formTop,
+            behavior: "smooth"
+        });
 
         setTimeout(() => {
-            document.getElementById("empresa").focus();
-        }, 400);
+           document.getElementById("empresa").focus();
+showFormToast();
+        }, 500);
 
     }, 150);
 }
@@ -685,7 +710,21 @@ function copySuccessCode(){
     btn.textContent = textoOriginal;
   }, 2000);
 }
-</script>
+  function showFormToast(){
 
+    const toast = document.getElementById("formToast");
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+
+}
+</script>
+  
+<div id="formToast" class="form-toast">
+  ✓ Formulario listo para un nuevo requerimiento
+</div>
 </body>
 </html>
