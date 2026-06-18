@@ -71,7 +71,92 @@ textarea{min-height:150px;resize:vertical}
 .counter{text-align:right;color:var(--gray);font-size:12px;margin-top:4px}
 .btn{background:var(--navy);color:white;border:0;border-radius:10px;padding:13px 18px;font-weight:800;cursor:pointer;margin-top:18px}
 .btn:hover{background:var(--blue)}
-footer{padding:28px 0;color:var(--gray);font-size:13px;text-align:center}
+.footer-v2{
+background:#06152a;
+color:#ffffff;
+margin-top:70px;
+}
+
+.footer-inner{
+width:min(1180px,92%);
+margin:auto;
+padding:55px 0;
+display:grid;
+grid-template-columns:1.4fr 1fr;
+gap:120px;
+align-items:start;
+}
+
+.footer-brand h3{
+margin:0 0 14px;
+font-size:28px;
+font-weight:900;
+letter-spacing:.06em;
+}
+
+.footer-brand p{
+margin:8px 0;
+color:#c4cfdf;
+line-height:1.7;
+}
+
+.footer-contact{
+margin-top:25px;
+}
+
+.footer-contact a,
+.footer-contact span{
+display:block;
+margin:8px 0;
+color:#c4cfdf;
+text-decoration:none;
+}
+
+.footer-links{
+justify-self:end;
+text-align:right;
+}
+
+.footer-links b{
+display:block;
+margin-bottom:18px;
+font-size:17px;
+}
+
+.footer-links a{
+display:block;
+margin:12px 0;
+color:#ffffff;
+text-decoration:none;
+transition:.25s;
+}
+
+.footer-links a:hover{
+color:#4aa3ff;
+transform:translateX(-4px);
+}
+
+.footer-legal{
+border-top:1px solid rgba(255,255,255,.10);
+padding:28px 0;
+text-align:center;
+font-size:13px;
+color:#9fb1c8;
+}
+
+@media(max-width:900px){
+
+.footer-inner{
+grid-template-columns:1fr;
+gap:50px;
+}
+
+.footer-links{
+justify-self:start;
+text-align:left;
+}
+
+}
 @media(max-width:700px){.grid{grid-template-columns:1fr}h1{font-size:34px}}
 </style>
 </head>
@@ -177,39 +262,34 @@ footer{padding:28px 0;color:var(--gray);font-size:13px;text-align:center}
 
 </main>
 
-<footer>
-  <div class="footer">
-    <div>
+<footer class="footer-v2">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
       <h3>VIREXA GROUP PERÚ</h3>
+      <p>Proveedor Estratégico Empresarial</p>
       <p>Marca comercial de Yakar Negocios E.I.R.L.</p>
-      <p>Proveedor Estratégico Empresarial.</p>
+
+      <div class="footer-contact">
+        <a href="https://wa.me/51973669004?text=Hola%20Virexa%20Group%20Per%C3%BA%2C%20quisiera%20realizar%20una%20consulta%20sobre%20un%20requerimiento%20empresarial." target="_blank" rel="noopener">+51 973 669 004</a>
+        <a href="mailto:virexagroup.pe@gmail.com">virexagroup.pe@gmail.com</a>
+        <span>Lima Metropolitana – Perú</span>
+      </div>
     </div>
 
-    <div>
-      <b>Contacto</b>
-      <a href="https://wa.me/51973669004?text=Hola%20Virexa%20Group%20Per%C3%BA%2C%20quisiera%20realizar%20una%20consulta%20sobre%20un%20requerimiento%20empresarial." target="_blank" rel="noopener">+51 973 669 004</a>
-      <a href="mailto:virexagroup.pe@gmail.com">virexagroup.pe@gmail.com</a>
-      <p>Lima Metropolitana – Perú</p>
-      <p>Atención presencial previa coordinación.</p>
-    </div>
-
-    <div>
+    <div class="footer-links">
       <b>Enlaces</b>
       <a href="index.html">Inicio</a>
       <a href="libro-reclamaciones.html">Libro de Reclamaciones</a>
       <a href="gobierno-integridad.html">Gobierno e Integridad</a>
     </div>
+
   </div>
 
-  <hr style="margin:24px 0;border:none;border-top:1px solid rgba(255,255,255,.15);">
-
-  <p style="font-size:13px;line-height:1.6;opacity:.88;text-align:center;padding:0 24px;">
-    Virexa Group Perú y Yakar Negocios E.I.R.L. utilizan sus denominaciones, contenidos e identidad visual conforme a la legislación peruana sobre propiedad intelectual y competencia desleal.
-  </p>
-
-  <p style="font-size:12px;opacity:.72;margin-top:12px;text-align:center;">
-    © 2026 Virexa Group Perú. Todos los derechos reservados.
-  </p>
+  <div class="footer-legal">
+    <p>© 2026 Virexa Group Perú. Todos los derechos reservados.</p>
+    <p>Denominaciones e identidad visual utilizadas conforme a la legislación peruana sobre propiedad intelectual y competencia desleal.</p>
+  </div>
 </footer>
 
 <script>
