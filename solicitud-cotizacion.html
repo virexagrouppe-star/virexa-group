@@ -31,7 +31,20 @@ header{background:white;border-bottom:1px solid var(--line);position:sticky;top:
 .logo small{display:block;font-size:11px;color:var(--gray);letter-spacing:.12em;margin-top:4px}
 .btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:800;border:0;cursor:pointer}
 .btn-primary{background:var(--navy);color:white}
-.btn-light{background:white;color:var(--navy);border:1px solid var(--line)}
+.btn-light{
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--line);
+  transition:all .25s ease;
+}
+
+.btn-light:hover{
+  background:var(--navy);
+  color:white;
+  border-color:var(--navy);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
 
 .hero{background:linear-gradient(135deg,#061f3c,#0a3d78);color:white;padding:70px 0}
 .hero h1{font-size:clamp(40px,5vw,64px);line-height:1.05;margin:0 0 18px}
