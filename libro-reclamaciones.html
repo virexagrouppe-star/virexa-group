@@ -44,8 +44,14 @@ header{
   padding:12px 18px;
   font-weight:800;
   display:inline-block;
+  transition:all .25s ease;
 }
-
+.btn-light:hover{
+  background:var(--navy);
+  color:white;
+  border-color:var(--navy);
+  transform:translateY(-2px);
+}
 @media(max-width:700px){
   .nav{
     flex-direction:column;
