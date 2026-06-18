@@ -7,11 +7,25 @@
 <style>
 :root{--navy:#061f3c;--blue:#0a3d78;--gray:#667085;--soft:#f4f7fb;--line:#d9e1ea;--text:#101828}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--soft);line-height:1.5}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:var(--soft);
+  line-height:1.5;
+  padding-top:96px;
+}
 .container{width:min(980px,92%);margin:auto}
-header{background:white;border-bottom:1px solid var(--line);padding:22px 0;position:sticky;
-top:0;
-z-index:999;}
+header{
+  background:white;
+  border-bottom:1px solid var(--line);
+  padding:22px 0;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+}
 .logo{font-weight:900;color:var(--navy);letter-spacing:.08em}
 .logo small{display:block;font-size:11px;color:var(--gray);letter-spacing:.12em}
   .nav{
