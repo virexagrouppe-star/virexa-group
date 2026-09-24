@@ -1,1 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virexa Group Perú | Suministros Estratégicos y Soluciones Corporativas</title>
+  <meta name="description" content="Dotación industrial, EPP textil y suministros estratégicos para minería, construcción e industria. Entregamos lo prometido, cuando lo prometimos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul: #1B3A6B;
+      --gris: #8A8D8F;
+      --blanco: #FFFFFF;
+      --gris-claro: #F4F5F7;
+      --texto: #1a1a1a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--texto);
+      line-height: 1.6;
+      background: var(--blanco);
+    }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
+    /* HEADER */
+    header {
+      background: var(--blanco);
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+    }
+    .logo img { height: 60px; display: block; }
+    nav ul { display: flex; gap: 28px; list-style: none; align-items: center; }
+    nav a {
+      text-decoration: none; color: var(--azul); font-weight: 600;
+      font-size: 14px; letter-spacing: 0.3px;
+    }
+    nav a:hover { color: var(--gris); }
+    .btn-nav {
+      background: var(--azul); color: var(--blanco) !important;
+      padding: 10px 20px; border-radius: 6px;
+    }
+    .btn-nav:hover { background: #152f57; color: var(--blanco) !important; }
+    .menu-toggle { display: none; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--azul) 0%, #0f2647 100%);
+      color: var(--blanco);
+      padding: 100px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      background: url('hero-virexa.png') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 780px; }
+    .hero .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      color: var(--blanco);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 800; line-height: 1.1;
+      margin-bottom: 24px; letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 19px; font-weight: 400; line-height: 1.55;
+      margin-bottom: 36px; color: rgba(255,255,255,0.9);
+      max-width: 640px;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 15px 32px; border-radius: 8px;
+      text-decoration: none; font-weight: 700; font-size: 15px;
+      transition: all 0.2s; border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--blanco); color: var(--azul);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .btn-outline {
+      background: transparent; color: var(--blanco);
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline:hover { border-color: var(--blanco); background: rgba(255,255,255,0.08); }
+
+    /* SECCIONES */
+    section { padding: 90px 0; }
+    .section-title {
+      font-size: 36px; font-weight: 800; color: var(--azul);
+      margin-bottom: 16px; line-height: 1.15; letter-spacing: -0.3px;
+    }
+    .section-sub {
+      font-size: 17px; color: #4b5563; margin-bottom: 56px; max-width: 720px;
+    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+
+    /* CARDS */
+    .card {
+      background: var(--blanco); border: 1px solid #e5e7eb;
+      border-radius: 12px; padding: 34px 28px;
+      transition: all 0.25s;
+    }
+    .card:hover { border-color: var(--azul); box-shadow: 0 12px 30px rgba(27,58,107,0.08); transform: translateY(-3px); }
+    .card .icon {
+      width: 52px; height: 52px; border-radius: 10px;
+      background: rgba(27,58,107,0.08); display: flex;
+      align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 24px;
+    }
+    .card h3 {
+      font-size: 19px; font-weight: 700; color: var(--azul);
+      margin-bottom: 12px;
+    }
+    .card p { font-size: 15px; color: #4b5563; line-height: 1.6; }
+
+    /* LÍNEAS DE PRODUCTO */
+    .lineas { background: var(--gris-claro); }
+    .linea-card {
+      background: var(--blanco); border-radius: 12px; overflow: hidden;
+      border: 1px solid #e5e7eb; transition: all 0.25s;
+    }
+    .linea-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(27,58,107,0.1); }
+    .linea-header {
+      background: var(--azul); color: var(--blanco);
+      padding: 22px 26px;
+    }
+    .linea-header h3 { font-size: 20px; font-weight: 700; }
+    .linea-body { padding: 26px; }
+    .linea-body ul { list-style: none; }
+    .linea-body li {
+      padding: 9px 0; font-size: 15px; color: #374151;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .linea-body li:last-child { border-bottom: none; }
+    .linea-body li::before { content: "→ "; color: var(--gris); font-weight: 700; }
+
+    /* COMPROMISO */
+    .compromiso {
+      background: linear-gradient(135deg, var(--azul) 0%, #0f2647 100%);
+      color: var(--blanco); text-align: center;
+    }
+    .compromiso .section-title { color: var(--blanco); }
+    .compromiso p { font-size: 19px; line-height: 1.7; max-width: 780px; margin: 0 auto; color: rgba(255,255,255,0.92); }
+    .compromiso .firma {
+      margin-top: 40px; font-size: 13px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gris);
+    }
+
+    /* PROCESO */
+    .pasos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+    .paso {
+      text-align: center; padding: 24px 14px;
+      border-radius: 12px; background: var(--gris-claro);
+      transition: all 0.25s;
+    }
+    .paso:hover { background: var(--azul); color: var(--blanco); }
+    .paso .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--azul); color: var(--blanco);
+      font-weight: 800; margin-bottom: 14px; font-size: 15px;
+    }
+    .paso:hover .num { background: var(--blanco); color: var(--azul); }
+    .paso h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .paso p { font-size: 13px; color: #6b7280; }
+    .paso:hover p { color: rgba(255,255,255,0.85); }
+
+    /* CTA FINAL */
+    .cta-final { text-align: center; padding: 90px 0; background: var(--blanco); }
+    .cta-final h2 { font-size: 34px; font-weight: 800; color: var(--azul); margin-bottom: 16px; }
+    .cta-final p { font-size: 17px; color: #4b5563; margin-bottom: 34px; }
+
+    /* FOOTER */
+    footer {
+      background: #0d1f3d; color: rgba(255,255,255,0.85);
+      padding: 60px 0 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+      padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    footer h4 { color: var(--blanco); font-size: 14px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+    footer p { font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 8px; }
+    footer a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; }
+    footer a:hover { color: var(--blanco); text-decoration: underline; }
+    .legal {
+      font-size: 12px; color: rgba(255,255,255,0.55);
+      padding-top: 24px; line-height: 1.7; text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 36px; }
+      .hero p { font-size: 16px; }
+      .section-title { font-size: 28px; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .pasos { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      section { padding: 60px 0; }
+      .hero { padding: 60px 0 50px; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="logo-virexa.png.PNG" alt="Virexa Group">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#diferenciales">Nosotros</a></li>
+        <li><a href="#lineas">Soluciones</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="solicitud-cotizacion.html" class="btn-nav">Solicitar Cotización</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="tag">Proveedor Estratégico Empresarial</span>
+    <h1>Su operación no puede detenerse. Nosotros nos aseguramos de que no lo haga.</h1>
+    <p>Dotación industrial, EPP textil y suministros estratégicos para minería, construcción e industria. Entregamos lo prometido, cuando lo prometimos.</p>
+    <div class="hero-buttons">
+      <a href="solicitud-cotizacion.html" class="btn btn-primary">Solicitar Cotización</a>
+      <a href="#lineas" class="btn btn-outline">Ver soluciones</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIALES -->
+<section id="diferenciales">
+  <div class="container">
+    <h2 class="section-title">Por qué Virexa Group</h2>
+    <p class="section-sub">No improvisamos. Cada requerimiento se gestiona con método, verificación y responsabilidad.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">🔗</div>
+        <h3>Proveedor integral multisuministro</h3>
+        <p>Un solo interlocutor para textil, seguridad industrial y ferretería. Menos proveedores, menos coordinación, menos riesgo.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✓</div>
+        <h3>Calidad que se verifica</h3>
+        <p>Aplicamos estándares internacionales de control en cada etapa. Cada pedido pasa por una lista de verificación. Si algo no cumple, no sale de nuestro almacén.</p>
+      </div>
+      <div class="card">
+        <div class="icon">◆</div>
+        <h3>Asesoría técnica y soporte</h3>
+        <p>Acompañamiento real durante todo el proceso: desde la definición del requerimiento hasta la entrega y el seguimiento post-venta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LÍNEAS -->
+<section id="lineas" class="lineas">
+  <div class="container">
+    <h2 class="section-title">Líneas de producto</h2>
+    <p class="section-sub">Suministros estratégicos para operaciones que no pueden fallar.</p>
+    <div class="grid-3">
+      <div class="linea-card">
+        <div class="linea-header"><h3>Textil Industrial</h3></div>
+        <div class="linea-body">
+          <ul>
+            <li>Uniformes industriales</li>
+            <li>Polos corporativos</li>
+            <li>Chalecos y casacas</li>
+            <li>Ropa de lluvia</li>
+            <li>EPP textil</li>
+          </ul>
+        </div>
+      </div>
+      <div class="linea-card">
+        <div class="linea-header"><h3>Seguridad Industrial</h3></div>
+        <div class="linea-body">
+          <ul>
+            <li>Arneses de posicionamiento</li>
+            <li>Eslingas y ratchets</li>
+            <li>Polipastos</li>
+            <li>Equipos de izaje</li>
+            <li>Accesorios de seguridad</li>
+          </ul>
+        </div>
+      </div>
+      <div class="linea-card">
+        <div class="linea-header"><h3>Ferretería y Suministros</h3></div>
+        <div class="linea-body">
+          <ul>
+            <li>Según operación</li>
+            <li>Requerimientos específicos</li>
+            <li>Atención por proyecto</li>
+            <li>Consumibles industriales</li>
+            <li>Gestión integral</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPROMISO -->
+<section class="compromiso">
+  <div class="container">
+    <h2 class="section-title">Cumplimos lo que prometemos.</h2>
+    <p>En Virexa Group no vendemos solo productos. Nos hacemos responsables de que su requerimiento llegue en la fecha, con las especificaciones y en las condiciones acordadas. Si algo cambia, se lo comunicamos de inmediato. Sin sorpresas, sin excusas, sin letra chica.</p>
+    <p class="firma">— Virexa Group Perú</p>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="container">
+    <h2 class="section-title">Cómo trabajamos</h2>
+    <p class="section-sub">Una ruta simple para reducir incertidumbre y facilitar la toma de decisiones.</p>
+    <div class="pasos">
+      <div class="paso"><div class="num">1</div><h4>Necesidad</h4><p>Recibimos el requerimiento.</p></div>
+      <div class="paso"><div class="num">2</div><h4>Análisis</h4><p>Revisamos alcance.</p></div>
+      <div class="paso"><div class="num">3</div><h4>Propuesta</h4><p>Presentamos cotización.</p></div>
+      <div class="paso"><div class="num">4</div><h4>Ejecución</h4><p>Gestionamos el suministro.</p></div>
+      <div class="paso"><div class="num">5</div><h4>Seguimiento</h4><p>Control y cierre.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>¿Listo para cotizar su requerimiento?</h2>
+    <p>Cuéntenos qué necesita. Le responderemos con una propuesta clara.</p>
+    <div class="hero-buttons" style="justify-content:center;">
+      <a href="solicitud-cotizacion.html" class="btn btn-primary" style="background:var(--azul);color:var(--blanco);">Solicitar Cotización</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Virexa Group Perú</h4>
+        <p>Suministros estratégicos y soluciones corporativas para minería, construcción e industria.</p>
+        <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.55);">Marca comercial de Yakar Negocios E.I.R.L.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p><a href="tel:+51978325166">+51 978 325 166</a></p>
+        <p><a href="mailto:contacto@virexagroup.com">contacto@virexagroup.com</a></p>
+        <p>Lima Metropolitana — Perú</p>
+        <p><a href="https://t.me/VirexaGroup" target="_blank">Telegram: @VirexaGroup</a></p>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="solicitud-cotizacion.html">Solicitar Cotización</a></li>
+          <li><a href="libro-reclamaciones.html">Libro de Reclamaciones</a></li>
+          <li><a href="gobierno-integridad.html">Gobierno e Integridad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      Virexa Group es la marca comercial de <strong>Yakar Negocios E.I.R.L.</strong>, empresa formalmente constituida en el Perú, con <strong>RUC 20612733261</strong>, habilitada para la emisión de comprobantes de pago electrónicos, facturación y contratación con el Estado y el sector privado. Todas nuestras operaciones se realizan bajo el marco legal peruano vigente.<br><br>
+      © 2026 Virexa Group Perú. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
